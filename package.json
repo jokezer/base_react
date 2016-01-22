@@ -40,14 +40,16 @@
     "object-assign": "^4.0.1",
     "orchestrator": "^0.3.7",
     "react-addons-test-utils": "^0.14.2",
-    "webpack": "^1.12.3"
+    "webpack": "^1.12.3",
+    "superagent-mocker": "0.3.0"
   },
   "dependencies": {
     "history": "^1.13.0",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
     "react-router": "^1.0.0",
-    "reflux": "^0.3.0"
+    "reflux": "^0.3.0",
+    "superagent": "^1.7.1"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
