@@ -1,11 +1,11 @@
 import Reflux from 'reflux';
 import Superagent from 'superagent'
 
-const ItemActions = Reflux.createActions({
-  'loadItems': {children: ['completed', 'failed']}
+const OrderActions = Reflux.createActions({
+  'loadOrders': {children: ['completed', 'failed']}
 });
 
-ItemActions.loadItems.listen(function(){
+OrderActions.loadOrders.listen(function(){
   // make your api call/ async stuff here
   // we use setTimeout for faking async behaviour here
     Superagent
@@ -18,4 +18,4 @@ ItemActions.loadItems.listen(function(){
     // this.failed('an error occured');
     });
 
-export default ItemActions;
+export default OrderActions;

@@ -10,14 +10,17 @@ module.exports.getConfig = function(type) {
     },
     debug : isDev,
     module: {
-      loaders: [{
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['react', 'es2015']
+      loaders: [
+        { test: /\.jsx?$/,
+          exclude: /node_modules/,
+          loader: 'babel',
+          query: { presets: ['react', 'es2015'] } 
+        },
+        { test: /\.css$/, loader: "style-loader!css-loader" },
+        { test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+          loader: 'file-loader'
         }
-      }]
+      ]
     }
   };
 

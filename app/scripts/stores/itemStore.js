@@ -1,21 +1,22 @@
 import Reflux from 'reflux';
-import ItemActions from '../actions/itemActions';
+import OrderActions from '../actions/orderActions';
+import _ from 'lodash'
 
-let ItemStore = Reflux.createStore({
-  listenables: ItemActions,
+let OrderStore = Reflux.createStore({
+  listenables: OrderActions,
   
   init() {
     this.items = [];
   },
 
-  loadItems() {
+  loadOrders() {
     this.trigger({ 
       loading: true
     });
   },
 
-  loadItemsCompleted(items) {
-    this.items = items;
+  loadOrdersCompleted(items) {
+    this.items = _.concat(this.items, items)
 
     this.trigger({ 
       items : this.items,
@@ -23,7 +24,7 @@ let ItemStore = Reflux.createStore({
     });
   },
 
-  loadItemsFailed(error) {
+  loadOrdersFailed(error) {
     this.trigger({ 
       error : error,
       loading: false
@@ -32,4 +33,4 @@ let ItemStore = Reflux.createStore({
 
 });
 
-export default ItemStore;
+export default OrderStore;

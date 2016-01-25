@@ -1,9 +1,9 @@
 import React from 'react';
-import ItemList from '../components/itemList.jsx';
+import OrdersList from '../components/orders/ordersList.jsx';
 import ItemStore from '../stores/itemStore';
-import ItemActions from '../actions/itemActions';
+import OrderActions from '../actions/orderActions';
 
-class Home extends React.Component {
+class Orders extends React.Component {
   
   constructor(props){
     super(props);
@@ -15,7 +15,7 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.unsubscribe = ItemStore.listen(this.onStatusChange.bind(this));
-    ItemActions.loadItems();
+    OrderActions.loadOrders();
   }
 
   componentWillUnmount() {
@@ -29,11 +29,11 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <h1>Home Area</h1>
-        <ItemList { ...this.state } />
+        <h1>Orders</h1>
+        <OrdersList { ...this.state } />
       </div>
     );
   }
 }
 
-export default Home;
+export default Orders;
