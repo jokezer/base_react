@@ -2,13 +2,18 @@ import React from 'react';
 import OrderActions from '../../actions/orderActions';
 
 const LoadMoreButton = React.createClass({
+  propTypes: {
+    loading : React.PropTypes.bool
+  },
+
   loadMoreOrders: () => {
     OrderActions.loadOrders();
   },
 
   render() {
     return (
-      <a className="btn btn-default" onClick={this.loadMoreOrders} role="button">Load More</a>
+      <a className="btn btn-default" disabled={this.props.loading} onClick={this.loadMoreOrders}
+      role="button">Load More</a>
     );
   }
 });
@@ -47,9 +52,9 @@ const OrdersList = (props) => {
         {items}
       </ul>
       {loading}
-      <LoadMoreButton />
+      <LoadMoreButton loading={props.loading} />
     </div>
-  );                               
+  );
 };
 
 OrdersList.propTypes = {
