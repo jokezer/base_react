@@ -16,7 +16,7 @@ const routes = (
     <Route path='/' component={ App }>
       <IndexRoute component={ Orders }/>
       <Route path='info' component={ Info } />
-      <Route path='home' component={ Orders } />
+      <Route path='orders' component={ Orders } />
       <Route path='*' component={NotFound}/>
     </Route>
   </Router>

@@ -12,8 +12,8 @@ const LoadMoreButton = React.createClass({
 
   render() {
     return (
-      <a className="btn btn-default" disabled={this.props.loading} onClick={this.loadMoreOrders}
-      role="button">Load More</a>
+      <a className="btn btn-default" disabled={this.props.loading}
+      onClick={this.loadMoreOrders} role="button">Load More</a>
     );
   }
 });
@@ -35,7 +35,8 @@ const OrderItem = React.createClass({
           <h3 className="panel-title">{this.props.title}</h3>
         </div>
         <div className="panel-body">
-          {this.props.content}
+          <p>{this.props.content}</p>
+          <button type="button" className="btn btn-success">Apply</button>
         </div>
       </div>
     );

@@ -3,28 +3,35 @@ import OrdersList from '../components/orders/ordersList.jsx';
 import ItemStore from '../stores/itemStore';
 import OrderActions from '../actions/orderActions';
 
-class Orders extends React.Component {
-  
-  constructor(props){
-    super(props);
-    this.state = {
-      items : [],
+const Orders = React.createClass({
+
+  // constructor(props){
+  //   super(props);
+  // }
+
+  getInitialState() {
+    return ({
+      items: [],
       loading: false
-    };
-  }
+    })
+  },
 
   componentDidMount() {
-    this.unsubscribe = ItemStore.listen(this.onStatusChange.bind(this));
-    OrderActions.loadOrders();
-  }
+    //TODO: what is unsubscribe?
+    this.unsubscribe = ItemStore.listen(this.onStatusChange);
+    //FIXME: fix double loading of orders
+    // if(!ItemStore.items.length) {
+      OrderActions.loadOrders();
+    // }
+  },
 
   componentWillUnmount() {
     this.unsubscribe();
-  }
+  },
 
   onStatusChange(state) {
     this.setState(state);
-  }
+  },
 
   render() {
     return (
@@ -34,6 +41,6 @@ class Orders extends React.Component {
       </div>
     );
   }
-}
+});
 
 export default Orders;
