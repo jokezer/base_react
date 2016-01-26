@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import OrderActions from '../../actions/orderActions';
 
 const LoadMoreButton = React.createClass({
@@ -23,30 +24,38 @@ const LoadMoreButton = React.createClass({
   }
 });
 
-const OrderItem = React.createClass({
-  propTypes: {
-    title : React.PropTypes.string
-  },
+class OrderItem extends React.Component {
 
-  getDefaultProps: () => {
-    return { title: "Order" }
-  },
+  constructor(props) {
+    super(props);
+    this.files = this.props.files.map(file => <img key={file} className="img-thumbnail col-sm-1" src={file} />)
+  }
 
   render() {
-
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
           <h3 className="panel-title">{this.props.title}</h3>
         </div>
         <div className="panel-body">
+          
           <p>{this.props.content}</p>
-          <button type="button" className="btn btn-success">Apply</button>
+
+          <p><b>Attachments: {this.files.length} files</b></p>
+          <p className="row">
+            {this.files}
+          </p>
+
+          <Link to={"orders/" + this.props.id} className="btn btn-success">Show</Link>
+        
         </div>
       </div>
     );
   }
-});
+};
+
+OrderItem.propTypes = { title : React.PropTypes.string }
+OrderItem.defaultProps = {title: "Order"}
 
 const OrdersList = (props) => {
   let items = props.items.map(item => <OrderItem {...item} key={item.id} />),

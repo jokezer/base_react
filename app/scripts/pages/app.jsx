@@ -5,7 +5,7 @@ const App = (props) => {
     return (
       <div>
         <Header />
-        <div className="content">
+        <div className="container">
           {props.children}
         </div>
       </div>

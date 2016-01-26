@@ -1,22 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-// const Header = (props) => {
-//   return (
-//     <header className="clearfix">
-//       Application Name
-//       <nav className="clearfix">
-//         <div className="nav-item">
-//           <Link to="orders">Home</Link>
-//         </div>
-//         <div className="nav-item">
-//           <Link to="orders">Orders</Link>
-//         </div>
-//       </nav>
-//     </header>
-//   )
-// };
-
 const Header = (props) => {
   return (
     <nav className="navbar navbar-default">
@@ -38,6 +22,7 @@ const Header = (props) => {
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li><a href="#">Log in</a></li>
+            <li><Link to="profile">Profile</Link></li>
           </ul>
         </div>
       </div>

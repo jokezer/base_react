@@ -8,14 +8,15 @@ let build_order = () => {
   return {
   	id: _.random(1, 1000), 
   	title: ordersData.titles[Math.floor(Math.random()*ordersData.titles.length)], 
-  	content: 'content'}
+  	content: ordersData.descriptions[Math.floor(Math.random()*ordersData.descriptions.length)],
+  	files: ordersData.files
+  }
 }
 
 let mock_request = Mock(Superagent);
 mock_request.timeout = _.random(100, 1000);
 
 mock_request.get('/orders', (req, res) => {
-  console.log(req, res)
   return [
     build_order(),
     build_order(),
@@ -24,9 +25,5 @@ mock_request.get('/orders', (req, res) => {
 });
 
 mock_request.get('/orders/:id', function(req) {
-  return {
-    id: req.params.id,
-    title: 'Title',
-    content: 'Content of the order'
-  };
+  return build_order();
 });
