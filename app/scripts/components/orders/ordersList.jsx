@@ -2,18 +2,23 @@ import React from 'react';
 import OrderActions from '../../actions/orderActions';
 
 const LoadMoreButton = React.createClass({
+  getInitialState() {
+    return {page: 1}
+  },
+
   propTypes: {
     loading : React.PropTypes.bool
   },
 
-  loadMoreOrders: () => {
-    OrderActions.loadOrders();
+  loadMoreOrders() {
+    ++this.state.page
+    OrderActions.loadOrders({page: this.state.page});
   },
 
   render() {
     return (
       <a className="btn btn-default" disabled={this.props.loading}
-      onClick={this.loadMoreOrders} role="button">Load More</a>
+      onClick={this.loadMoreOrders} role="button">Load More {this.state.page}</a>
     );
   }
 });

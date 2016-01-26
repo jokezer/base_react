@@ -5,13 +5,17 @@ import ordersData from './fixtures/orders'
 import _ from 'lodash'
 
 let build_order = () => {
-  return {id: _.random(1, 1000), title: ordersData.titles[Math.floor(Math.random()*ordersData.titles.length)], content: 'content'}
+  return {
+  	id: _.random(1, 1000), 
+  	title: ordersData.titles[Math.floor(Math.random()*ordersData.titles.length)], 
+  	content: 'content'}
 }
 
 let mock_request = Mock(Superagent);
 mock_request.timeout = _.random(100, 1000);
 
-mock_request.get('/orders', (req) => {
+mock_request.get('/orders', (req, res) => {
+  console.log(req, res)
   return [
     build_order(),
     build_order(),

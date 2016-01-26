@@ -1,6 +1,6 @@
 import React from 'react';
 import OrdersList from '../components/orders/ordersList.jsx';
-import ItemStore from '../stores/itemStore';
+import OrderStore from '../stores/orderStore';
 import OrderActions from '../actions/orderActions';
 
 const Orders = React.createClass({
@@ -18,11 +18,9 @@ const Orders = React.createClass({
 
   componentDidMount() {
     //TODO: what is unsubscribe?
-    this.unsubscribe = ItemStore.listen(this.onStatusChange);
-    //FIXME: fix double loading of orders
-    // if(!ItemStore.items.length) {
-      OrderActions.loadOrders();
-    // }
+    this.unsubscribe = OrderStore.listen(this.onStatusChange);
+    OrderActions.clearOrders();
+    OrderActions.loadOrders();
   },
 
   componentWillUnmount() {

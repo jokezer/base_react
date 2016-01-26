@@ -29,8 +29,11 @@ let OrderStore = Reflux.createStore({
       error : error,
       loading: false
     });
-  }
+  },
 
+  clearOrders() {
+    this.items = [];
+  }
 });
 
 export default OrderStore;
