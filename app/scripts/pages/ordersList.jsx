@@ -1,7 +1,7 @@
 import React from 'react';
 import OrdersList from '../components/orders/ordersList.jsx';
-import OrderStore from '../stores/orderStore';
-import OrderActions from '../actions/orderActions';
+import OrderStore from '../stores/ordersListStore';
+import OrderActions from '../actions/ordersListActions';
 
 const Orders = React.createClass({
 

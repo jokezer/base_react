@@ -1,28 +1,25 @@
 import Reflux from 'reflux';
-import OrderActions from '../actions/orderActions';
-// import _ from 'lodash'
+import OrderActions from '../actions/ordersListActions';
+import _ from 'lodash'
 
 let OrderStore = Reflux.createStore({
   listenables: OrderActions,
   
   init() {
-    this.order = {}
-    // this.items = [];
+    this.items = [];
   },
 
-  loadOrder() {
+  loadOrders() {
     this.trigger({ 
       loading: true
     });
   },
 
-  loadOrderCompleted(item) {
-    // this.items = _.concat(this.items, items)
-    this.order = item
+  loadOrdersCompleted(items) {
+    this.items = _.concat(this.items, items)
 
     this.trigger({ 
-      //TODO: does trigger function only signilize that state had changed or sends new state?
-      order : this.order,
+      items : this.items,
       loading: false
     });
   },
@@ -32,6 +29,10 @@ let OrderStore = Reflux.createStore({
       error : error,
       loading: false
     });
+  },
+
+  clearOrders() {
+    this.items = [];
   }
 });
 

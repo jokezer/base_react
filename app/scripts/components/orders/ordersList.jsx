@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import OrderActions from '../../actions/orderActions';
+import OrderActions from '../../actions/ordersListActions';
 
 const LoadMoreButton = React.createClass({
   getInitialState() {

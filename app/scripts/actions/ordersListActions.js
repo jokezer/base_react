@@ -2,12 +2,14 @@ import Reflux from 'reflux';
 import Superagent from 'superagent'
 
 const OrderActions = Reflux.createActions([
-  {'loadOrder': {children: ['completed', 'failed']}}
+  {'loadOrders': {children: ['completed', 'failed']}},
+  'clearOrders'
 ]);
 
-OrderActions.loadOrder.listen(function(orderId){
+OrderActions.loadOrders.listen(function(data){
   Superagent
-    .get(`/orders/${orderId}`)
+    .get('/orders')
+    .query(data)
     .end((error, response) => {
       this.completed(response);
     });

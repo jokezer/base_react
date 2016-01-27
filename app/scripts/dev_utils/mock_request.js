@@ -14,7 +14,7 @@ let build_order = () => {
 }
 
 let mock_request = Mock(Superagent);
-mock_request.timeout = _.random(100, 1000);
+mock_request.timeout =  1000;
 
 mock_request.get('/orders', (req, res) => {
   return [
